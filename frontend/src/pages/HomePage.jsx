@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 const HomePage = () => {
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
 
             <section className=' pt-32 pb-16 flex flex-col items-center justify-center gap-16'>
                 <img src="/images/homeHero.png" alt="Hero" className='w-[50vw]' />
@@ -113,7 +113,7 @@ const HomePage = () => {
                 <button className=' mt-6 w-fit text-xl font-semibold px-8 py-2 bg-[#387ED1] hover:bg-slate-900 transition-all duration-300 ease-in-out text-white rounded-sm'>Sign up now</button>
             </section>
 
-            <Footer/>
+            {/* <Footer/> */}
         </>
     )
 }
