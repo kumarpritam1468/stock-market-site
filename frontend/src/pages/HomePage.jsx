@@ -1,6 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 const HomePage = () => {
     return (
@@ -17,9 +15,9 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <section className=' flex flex-col py-16'>
-                <div className=' flex'>
-                    <div className=" flex flex-col gap-12 w-1/2 pr-20">
+            <section className=' flex flex-col py-16 max-md:px-6'>
+                <div className=' flex max-md:flex-col max-md: gap-6'>
+                    <div className=" flex flex-col gap-12 w-1/2 max-md:w-full pr-20 max-md:pr-0">
                         <h2 className=' text-4xl font-semibold text-gray-800'>Trust with confidence</h2>
 
                         <div className=' flex flex-col gap-8'>
@@ -43,7 +41,7 @@ const HomePage = () => {
                         </div>
                     </div>
 
-                    <div className=' w-[55%] flex flex-col items-center gap-6'>
+                    <div className=' w-[55%] max-md:w-full flex flex-col items-center gap-6'>
                         <img src="/images/ecosystem.png" alt="Ecosystem" className=' w-full' />
 
                         <div className=' flex gap-12'>
@@ -57,14 +55,14 @@ const HomePage = () => {
 
             </section>
 
-            <section className=' flex gap-0 py-16'>
+            <section className=' flex max-md:flex-col max-md:gap-10 py-16 max-md:px-6'>
                 <div>
                     <h2 className=' font-medium text-4xl pb-7'>Unbeatable pricing</h2>
                     <p>We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.</p>
                     <h3 className=' text-blue-600 font-medium text-lg hover:text-slate-900 duration-300 ease-in-out transition-all cursor-pointer mt-4'>See Pricing →</h3>
                 </div>
 
-                <div className=' flex gap-6 w-full'>
+                <div className=' flex max-md:flex-wrap gap-6 w-full'>
                     <div className=' flex items-center'>
                         <img src="/images/pricingMF.svg" alt="0 pricing" width={120} />
                         <p className=' text-xs -ml-4'>Free account <br />
@@ -83,8 +81,8 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <section className=' flex py-16 items-center gap-32'>
-                <img src="/images/education.svg" alt="Education" className=' w-[40%]' />
+            <section className=' flex max-md:flex-col py-16 max-md:px-6 items-center gap-32'>
+                <img src="/images/education.svg" alt="Education" className=' w-[40%] max-md:w-[80%]' />
 
                 <div className=' flex flex-col gap-8'>
                     <h2 className=' font-normal text-3xl'>
