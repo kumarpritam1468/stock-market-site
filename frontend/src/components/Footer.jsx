@@ -8,7 +8,7 @@ import { FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className='min-h-96 w-full border-t-2 border-t-gray-200 py-8'>
+        <footer className='min-h-96 w-full px-6 border-t-2 border-t-gray-200 py-8'>
             <div className=' w-full max-w-[1100px] mx-auto flex max-sm:flex-col max-sm:gap-8 justify-around flex-wrap'>
                 <div className=" flex flex-col gap-4">
                     <img src="/images/logo.svg" alt="Zerodha logo" width={140} />

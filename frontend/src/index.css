@@ -15,8 +15,14 @@ section{
 }
 
 .navlinks a{
-    @apply hover:text-blue-500 duration-300 ease-in-out transition-all max-md:hidden;
+    @apply hover:text-blue-500 duration-300 ease-in-out transition-all font-semibold max-md:hidden;
 }
+
+a.active{
+    @apply text-blue-500;
+}
+
+
 
 .footer-p{
     @apply  font-medium text-gray-500 cursor-pointer hover:text-blue-500;
