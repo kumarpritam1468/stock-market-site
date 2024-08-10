@@ -69,6 +69,12 @@ const register = async (req, res) => {
             return res.status(400).json({ error: "Enter valid phone number" });
         }
 
+        const user = await User.findOne({email});
+
+        if(user){
+            return res.status(400).json({error:"User already exists"});
+        }
+
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 

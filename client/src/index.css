@@ -1,29 +1,45 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-section{
+main{
+    background: white;
+    color: black;
+}
+
+section {
     width: 1100px;
     max-width: 100%;
     margin: 0 auto;
 }
 
-.navlinks a{
+.login-pg {
+    background: url('/images/login-bg.jpg') rgba(0, 0, 0, .4) center/cover;
+    background-blend-mode: darken;
+}
+
+.login-pg * {
+    background: transparent;
+    border-color: white;
+}
+
+.navlinks a {
     @apply hover:text-blue-500 duration-300 ease-in-out transition-all font-semibold max-md:hidden;
 }
 
-a.active{
+a.active {
     @apply text-blue-500;
 }
 
 
 
-.footer-p{
-    @apply  font-medium text-gray-500 cursor-pointer hover:text-blue-500;
+.footer-p {
+    @apply font-medium text-gray-500 cursor-pointer hover:text-blue-500;
 }
+
+@tailwind utilities;
