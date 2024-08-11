@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import Layout from './layouts/Layout'
 import DashboardLayout from './layouts/DashboardLayout';
@@ -14,8 +14,11 @@ import Dashboard from './pages/Dashboard';
 
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import { useAuthUser } from './hooks/useAuthUser';
 
 function App() {
+
+  const authUser = useAuthUser();
 
   return (
     <main>
@@ -27,10 +30,10 @@ function App() {
           <Route path='/pricing' element={<Pricing />} />
           <Route path='/support' element={<Support />} />
         </Route>
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={!authUser ? <Signup /> : <Navigate to='/dashboard' />} />
+        <Route path='/login' element={!authUser ? <Login /> : <Navigate to='/dashboard' />} />
         <Route path='/dashboard' element={<DashboardLayout />}>
-          <Route path='' element={<Dashboard />} />
+          <Route path='' element={authUser ? <Dashboard /> : <Navigate to='/' />} />
         </Route>
       </Routes>
 

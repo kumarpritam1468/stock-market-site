@@ -11,7 +11,7 @@ const Navbar = () => {
           <img src="/images/logo.svg" alt="Logo" width={130} />
 
           <div className='navlinks flex gap-11 items-center text-md text-gray-500 '>
-            <NavLink to='/signup'>SignUp</NavLink>
+            <NavLink to='/dashboard'>Dashboard</NavLink>
             <NavLink to='/about'>About</NavLink>
             <NavLink to='/products'>Products</NavLink>
             <NavLink to='/pricing'>Pricing</NavLink>
@@ -23,7 +23,7 @@ const Navbar = () => {
       </nav>
       {menuActive &&
         <div className=' absolute right-6 top-20 px-12 py-6 flex flex-col gap-4 rounded-2xl border border-gray-300 bg-white z-50'>
-          <NavLink to='/signup'>SignUp</NavLink>
+          <NavLink to='/dashboard'>Dashboard</NavLink>
           <NavLink to='/about'>About</NavLink>
           <NavLink to='/products'>Products</NavLink>
           <NavLink to='/pricing'>Pricing</NavLink>

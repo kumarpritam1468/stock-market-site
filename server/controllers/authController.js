@@ -41,7 +41,7 @@ const login = async (req, res) => {
         res.status(200).json({ message: "Logged In Successfully" });
     } catch (error) {
         console.log(error);
-        res.status(500).json({error:"Failed to login"});
+        res.status(500).json({ error: "Failed to login" });
     }
 }
 
@@ -69,10 +69,10 @@ const register = async (req, res) => {
             return res.status(400).json({ error: "Enter valid phone number" });
         }
 
-        const user = await User.findOne({email});
+        const user = await User.findOne({ email });
 
-        if(user){
-            return res.status(400).json({error:"User already exists"});
+        if (user) {
+            return res.status(400).json({ error: "User already exists" });
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -92,7 +92,7 @@ const register = async (req, res) => {
         res.status(201).json(newUser);
     } catch (error) {
         console.log(error);
-        res.status(500).json({error:"Failed to register"});
+        res.status(500).json({ error: "Failed to register" });
     }
 }
 
@@ -103,8 +103,27 @@ const logout = async (req, res) => {
         res.status(200).json({ message: "Logged Out" });
     } catch (error) {
         console.log(error);
-        res.status(500).json({error:"Failed to logout"});
+        res.status(500).json({ error: "Failed to logout" });
     }
 }
 
-module.exports = { login, register, logout };
+const getMe = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id).select('-password');
+        // .populate('likes')
+        // .populate({
+        //     path: 'bookings',
+        //     populate: {
+        //       path: 'place',
+        //       select: 'name imgUrl'
+        //     }
+        // });
+
+        res.status(200).json(user);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Failed to get user" });
+    }
+}
+
+module.exports = { login, register, logout, getMe };
