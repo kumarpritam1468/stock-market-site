@@ -1,11 +1,17 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
+import DashboardNavbar from '../components/DashboardNavbar';
+import Sidebar from '../components/Sidebar';
 
 const DashboardLayout = () => {
     return (
-        <>
-            <Outlet /> {/* This is where the page content will be rendered */}
-        </>
+        <div className=' flex'>
+            <Sidebar />
+            <div>
+                <DashboardNavbar />
+                <Outlet /> {/* This is where the page content will be rendered */}
+            </div>
+        </div>
     );
 }
 

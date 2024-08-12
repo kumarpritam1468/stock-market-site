@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {toast} from 'react-hot-toast';
 
 const Signup = () => {
@@ -13,6 +13,8 @@ const Signup = () => {
         password: '',
         cPassword: ''
     });
+
+    const queryClient = useQueryClient();
 
     const {mutate:signup, isPending} = useMutation({
         mutationFn: async (inputs) => {
@@ -33,7 +35,8 @@ const Signup = () => {
         },
         onSuccess: () => {
             toast.success("Logged In");
-            navigate('/dashboard');
+            queryClient.invalidateQueries({queryKey:['authUser']});
+            // window.location.reload();
         },
         onError: (error) => {
             toast.error(error.message);
