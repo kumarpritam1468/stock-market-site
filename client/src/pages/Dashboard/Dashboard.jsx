@@ -1,11 +1,11 @@
 import React from 'react'
-import { useAuthUser } from '../hooks/useAuthUser'
+import { useAuthUser } from '../../hooks/useAuthUser'
 
 const Dashboard = () => {
   const authUser = useAuthUser();
 
   return (
-    <div className=' px-8 py-7'>
+    <div className=' pt-24 px-8'>
       <h1 className=' text-2xl font-semibold'>Hello, {authUser.name} !</h1>
 
       <div className=' w-full h-[1.5px] bg-gray-300 mt-4'></div>

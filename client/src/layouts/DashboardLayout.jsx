@@ -7,7 +7,7 @@ const DashboardLayout = () => {
     return (
         <div className=' flex'>
             <Sidebar />
-            <div>
+            <div className=' pl-[30vw]'>
                 <DashboardNavbar />
                 <Outlet /> {/* This is where the page content will be rendered */}
             </div>

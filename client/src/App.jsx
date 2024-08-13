@@ -5,15 +5,17 @@ import DashboardLayout from './layouts/DashboardLayout';
 
 import Support from './components/Support'
 
-import HomePage from "./pages/HomePage"
-import About from './pages/About'
-import Products from './pages/Products'
-import Pricing from './pages/Pricing'
+import HomePage from "./pages/Landing-Page/HomePage"
+import About from './pages/Landing-Page/About'
+import Products from './pages/Landing-Page/Products'
+import Pricing from './pages/Landing-Page/Pricing'
 
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Holdings from './pages/Dashboard/Holdings';
 
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+
 import { useAuthUser } from './hooks/useAuthUser';
 
 function App() {
@@ -24,7 +26,7 @@ function App() {
     <main>
       <Routes>
         <Route element={<Layout />}> {/* Layout component contains Navbar and Footer */}
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={!authUser ? <HomePage /> : <Navigate to='/login' />} />
           <Route path='/about' element={<About />} />
           <Route path='/products' element={<Products />} />
           <Route path='/pricing' element={<Pricing />} />
@@ -34,6 +36,7 @@ function App() {
         <Route path='/login' element={!authUser ? <Login /> : <Navigate to='/dashboard' />} />
         <Route path='/dashboard' element={<DashboardLayout />}>
           <Route path='' element={authUser ? <Dashboard /> : <Navigate to='/' />} />
+          <Route path='/dashboard/holdings' element={authUser ? <Holdings /> : <Navigate to='/' />} />
         </Route>
       </Routes>
 
