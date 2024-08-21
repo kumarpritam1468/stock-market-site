@@ -17,6 +17,8 @@ import Signup from './pages/Signup'
 import Login from './pages/Login'
 
 import { useAuthUser } from './hooks/useAuthUser';
+import Positions from './pages/Dashboard/Positions';
+import Funds from './pages/Dashboard/Funds';
 
 function App() {
 
@@ -37,6 +39,8 @@ function App() {
         <Route path='/dashboard' element={<DashboardLayout />}>
           <Route path='' element={authUser ? <Dashboard /> : <Navigate to='/' />} />
           <Route path='/dashboard/holdings' element={authUser ? <Holdings /> : <Navigate to='/' />} />
+          <Route path='/dashboard/positions' element={authUser ? <Positions /> : <Navigate to='/' />} />
+          <Route path='/dashboard/funds' element={authUser ? <Funds /> : <Navigate to='/' />} />
         </Route>
       </Routes>
 
