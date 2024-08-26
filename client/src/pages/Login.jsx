@@ -56,7 +56,7 @@ const Login = () => {
 
                         <div>
                             <label className=' label p-2'>
-                                <span className=' text-base label-text'>Email</span>
+                                <span className=' text-base text-white label-text'>Email</span>
                             </label>
                             <input type="text" placeholder='Enter Email' className=' w-full input input-bordered text-white h-10'
                                 value={inputs.email} onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
@@ -64,7 +64,7 @@ const Login = () => {
 
                         <div>
                             <label className=' label p-2'>
-                                <span className=' text-base label-text'>Password</span>
+                                <span className=' text-base text-white label-text'>Password</span>
                             </label>
                             <input type="password" placeholder='Enter Password' className=' w-full input input-bordered text-white h-10' value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })} />
                         </div>
@@ -75,7 +75,7 @@ const Login = () => {
 
                         <div>
                             <button className=' text-white btn btn-block btn-primary bg-blue-500 btn-sm text-base border-0 mt-4'>
-                                {isPending ? <div className=' loading loading-dots'></div> : 'Login'}
+                                {isPending ? <div className=' loading loading-spinner'></div> : 'Login'}
                             </button>
                         </div>
                     </form>
