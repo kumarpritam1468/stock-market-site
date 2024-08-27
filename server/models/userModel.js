@@ -31,13 +31,6 @@ const userSchema = new mongoose.Schema({
             default:[]
         }
     ],
-    orders: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'Order',
-            default:[]
-        }
-    ],
     accountBalance: { type: Number, default: 0 }
 })
 
