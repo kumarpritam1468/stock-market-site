@@ -4,6 +4,7 @@ import Layout from './layouts/Layout'
 import DashboardLayout from './layouts/DashboardLayout';
 
 import Support from './components/Support'
+import Sidebar from './components/Sidebar';
 
 import HomePage from "./pages/Landing-Page/HomePage"
 import About from './pages/Landing-Page/About'
@@ -16,9 +17,10 @@ import Holdings from './pages/Dashboard/Holdings';
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 
-import { useAuthUser } from './hooks/useAuthUser';
 import Positions from './pages/Dashboard/Positions';
 import Funds from './pages/Dashboard/Funds';
+
+import { useAuthUser } from './hooks/useAuthUser';
 
 function App() {
 
@@ -41,6 +43,7 @@ function App() {
           <Route path='/dashboard/holdings' element={authUser ? <Holdings /> : <Navigate to='/' />} />
           <Route path='/dashboard/positions' element={authUser ? <Positions /> : <Navigate to='/' />} />
           <Route path='/dashboard/funds' element={authUser ? <Funds /> : <Navigate to='/' />} />
+          <Route path='/dashboard/stocks' element={authUser ? <Sidebar /> : <Navigate to='/' />} />
         </Route>
       </Routes>
 

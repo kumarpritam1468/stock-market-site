@@ -4,7 +4,7 @@ import { watchlist } from '../data/data'
 const Sidebar = () => {
 
   return (
-    <div className='fixed w-[30vw] max-md:hidden h-screen border-r border-r-slate-500'>
+    <div className='fixed w-[30vw] max-md:w-screen max-md:pt-24 h-screen overflow-y-auto border-r border-r-slate-500'>
       <div className=' w-full flex justify-evenly items-center py-[22px] border-b-2 border-b-slate-200'>
         <div className=' flex gap-2'>
           <h4 className=' font-medium '>NIFTY 50</h4>
@@ -18,6 +18,16 @@ const Sidebar = () => {
         </div>
       </div>
 
+      <div className=' flex justify-between px-4 py-3 border-b-2 border-b-slate-200'>
+        <h5>Stock</h5>
+
+        <div className=' flex gap-6'>
+          <p >Value</p>
+          <p >Day chg.</p>
+          <p className=' md:hidden'>Action</p>
+        </div>
+      </div>
+
       {watchlist.map((stock, index) => {
         const [showIcon, setShowIcon] = useState(false);
         const [quantity, setQuantity] = useState(0);
@@ -27,9 +37,10 @@ const Sidebar = () => {
 
             {showIcon ?
               <button className=' px-4 py-1 bg-green-500 text-white rounded-full' onClick={() => document.getElementById(`buyBox${index}`).showModal()} >Buy</button>
-              : <div className=' flex gap-4'>
+              : <div className=' flex gap-6'>
                 <p className={`${stock.isDown ? 'text-red-600' : 'text-green-600'}`} >{stock.price}</p>
                 <p className={`${stock.isDown ? 'text-red-600' : 'text-green-600'}`} >{stock.percent}</p>
+                <button className=' px-4 py-1 bg-green-500 text-white rounded-full md:hidden' onClick={() => document.getElementById(`buyBox${index}`).showModal()} >Buy</button>
               </div>
             }
             <dialog id={`buyBox${index}`} className="modal">

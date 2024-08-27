@@ -14,7 +14,7 @@ const Holdings = () => {
       <h1 className=' text-xl font-medium mb-6'>Holdings</h1>
 
       <div className="overflow-x-auto">
-        <table className="table w-[60vw] table-zebra">
+        <table className="table w-[60vw] max-md:w-screen max-md:table-xs table-zebra">
           <thead>
             <tr>
               <th>Stock</th>
@@ -22,6 +22,7 @@ const Holdings = () => {
               <th>Avg. Cost</th>
               <th>Curr. Value</th>
               <th>P&L</th>
+              <th className=' md:hidden'>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -35,9 +36,10 @@ const Holdings = () => {
                   <td>{holding.avg}</td>
                   <td className={`${isPositive(holding.net) ? 'text-green-600' : 'text-red-500'}`} >{holding.price}</td>
                   {showIcon ?
-                    <button className=' px-5 py-1 mt-1 bg-red-500 text-white text-lg rounded-full' onClick={() => document.getElementById(`sellBox${index}`).showModal()} >Sell</button>
+                    <button className=' px-5 py-1 mt-1 bg-red-500 text-white text-lg rounded-full max-md:hidden' onClick={() => document.getElementById(`sellBox${index}`).showModal()} >Sell</button>
                     : <td className={`${isPositive(holding.net) ? 'text-green-600' : 'text-red-500'}`} >{holding.net}</td>
                   }
+                  <td className=' md:hidden'><button className=' px-5 max-md:px-3 py-1 mt-1 bg-red-500 text-white text-lg max-md:text-base rounded-full' onClick={() => document.getElementById(`sellBox${index}`).showModal()} >Sell</button></td>
                   <dialog id={`sellBox${index}`} className="modal">
                     <div className="modal-box">
                       <form method="dialog">

@@ -6,8 +6,10 @@ import Sidebar from '../components/Sidebar';
 const DashboardLayout = () => {
     return (
         <div className=' flex'>
-            <Sidebar />
-            <div className=' pl-[30vw]'>
+            <div className=' max-md:hidden'>
+                <Sidebar />
+            </div>
+            <div className=' pl-[30vw] max-md:pl-0'>
                 <DashboardNavbar />
                 <Outlet /> {/* This is where the page content will be rendered */}
             </div>

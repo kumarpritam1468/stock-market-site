@@ -30,7 +30,7 @@ const DashboardNavbar = () => {
 
     return (
         <>
-            <nav className='fixed w-[70vw] border-b-2 border-b-gray-200 bg-white z-30'>
+            <nav className='fixed w-[70vw] max-md:w-screen border-b-2 border-b-gray-200 bg-white z-30'>
                 <div className=' w-full mx-auto flex justify-between items-center py-6 px-6'>
                     <img src="/images/kiteLogo.png" alt="Kite Logo" width={30} />
 
@@ -46,12 +46,12 @@ const DashboardNavbar = () => {
                 </div>
             </nav>
             {menuActive &&
-                <div className=' absolute right-6 top-20 px-12 py-6 flex flex-col gap-4 rounded-2xl border border-gray-300 bg-white z-50'>
+                <div className=' absolute right-6 top-20 px-12 py-6 flex flex-col gap-4 rounded-2xl border border-gray-300 bg-white z-50' onClick={() => setMenuActive(!menuActive)}>
                     <NavLink to='/dashboard'>Dashboard</NavLink>
+                    <NavLink to='/dashboard/stocks'>Stocks</NavLink>
                     <NavLink to='/dashboard/holdings'>Holdings</NavLink>
                     <NavLink to='/dashboard/positions'>Positions</NavLink>
                     <NavLink to='/dashboard/funds'>Funds</NavLink>
-                    {isPending ? <div className=' loading-dots text-red-600 loading'></div> : <button to='/' className='text-red-500 font-semibold' onClick={() => logout()}>Logout</button>}
                 </div>
             }
         </>
