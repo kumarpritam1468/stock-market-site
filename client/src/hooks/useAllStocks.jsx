@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 
 export const useAllStocks = () => {
-    const {data:allStocks} = useQuery({
+    const {data:allStocks, isLoading} = useQuery({
         queryKey:['allStocks'],
         queryFn: async () => {
             try {
@@ -15,8 +15,9 @@ export const useAllStocks = () => {
             } catch (error) {
                 throw new Error(error);
             }
-        }
+        },
+        retry:false
     });
 
-    return allStocks;
+    return {allStocks, isLoading};
 }

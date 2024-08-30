@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import { watchlist } from '../data/data'
+// import { watchlist } from '../data/data'
+import { useAllStocks } from '../hooks/useAllStocks'
 
 const Sidebar = () => {
+
+  const {allStocks, isLoading} = useAllStocks();
 
   return (
     <div className='fixed w-[30vw] max-md:w-screen max-md:pt-24 h-screen overflow-y-auto border-r border-r-slate-500'>
@@ -28,7 +31,9 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {watchlist.map((stock, index) => {
+      {isLoading && <div className=' loading loading-spinner'></div>}
+
+      {allStocks?.map((stock, index) => {
         const [showIcon, setShowIcon] = useState(false);
         const [quantity, setQuantity] = useState(0);
         return (
@@ -39,7 +44,7 @@ const Sidebar = () => {
               <button className=' px-4 py-1 bg-green-500 text-white rounded-full' onClick={() => document.getElementById(`buyBox${index}`).showModal()} >Buy</button>
               : <div className=' flex gap-6'>
                 <p className={`${stock.isDown ? 'text-red-600' : 'text-green-600'}`} >{stock.price}</p>
-                <p className={`${stock.isDown ? 'text-red-600' : 'text-green-600'}`} >{stock.percent}</p>
+                <p className={`${stock.isDown ? 'text-red-600' : 'text-green-600'}`} >{stock.percentChange}</p>
                 <button className=' px-4 py-1 bg-green-500 text-white rounded-full md:hidden' onClick={() => document.getElementById(`buyBox${index}`).showModal()} >Buy</button>
               </div>
             }
