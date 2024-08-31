@@ -15,7 +15,7 @@ const Funds = () => {
         <h2 className=' font-medium text-2xl underline'>Equity</h2>
         <div className=' flex gap-16 py-6 px-10 items-center'>
           <h3 className=' text-2xl'>Margin Available:</h3>
-          <h1 className=' text-4xl'>{authUser?.accountBalance}</h1>
+          <h1 className=' text-4xl'>{authUser?.accountBalance.toFixed(2)}</h1>
         </div>
       </div>
 

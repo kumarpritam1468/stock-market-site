@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 // import { watchlist } from '../data/data'
 import { useAllStocks } from '../hooks/useAllStocks'
+import StockRow from './StockRow';
 
 const Sidebar = () => {
 
-  const {allStocks, isLoading} = useAllStocks();
+  const { allStocks, isLoading } = useAllStocks();
 
   return (
     <div className='fixed w-[30vw] max-md:w-screen max-md:pt-24 h-screen overflow-y-auto border-r border-r-slate-500'>
@@ -33,39 +34,9 @@ const Sidebar = () => {
 
       {isLoading && <div className=' loading loading-spinner'></div>}
 
-      {allStocks?.map((stock, index) => {
-        const [showIcon, setShowIcon] = useState(false);
-        const [quantity, setQuantity] = useState(0);
-        return (
-          <div className=' flex justify-between px-4 py-3 border-b-2 border-b-slate-200' key={index} onMouseEnter={() => setShowIcon(true)} onMouseLeave={() => setShowIcon(false)}>
-            <h5>{stock.name}</h5>
-
-            {showIcon ?
-              <button className=' px-4 py-1 bg-green-500 text-white rounded-full' onClick={() => document.getElementById(`buyBox${index}`).showModal()} >Buy</button>
-              : <div className=' flex gap-6'>
-                <p className={`${stock.isDown ? 'text-red-600' : 'text-green-600'}`} >{stock.price}</p>
-                <p className={`${stock.isDown ? 'text-red-600' : 'text-green-600'}`} >{stock.percentChange}</p>
-                <button className=' px-4 py-1 bg-green-500 text-white rounded-full md:hidden' onClick={() => document.getElementById(`buyBox${index}`).showModal()} >Buy</button>
-              </div>
-            }
-            <dialog id={`buyBox${index}`} className="modal">
-              <div className="modal-box">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                </form>
-                <h3 className="font-bold text-lg">{stock.name}</h3>
-                <p className="py-4">Market Price : {stock.price}</p>
-                <p className="py-2">
-                  Enter Quantity:
-                  <input type="number" placeholder='Quantity' min={1} onChange={(e) => setQuantity(e.target.value)} className=' mx-2 input input-bordered' />
-                </p>
-                <p className="py-4">Total Amount : {(stock.price * quantity).toFixed(2)}</p>
-                <button className="btn btn-success hover:text-white my-2 w-full bg-green-500">Buy</button>
-              </div>
-            </dialog>
-          </div>
-        )
-      })}
+      {allStocks?.map((stock, index) => (
+        <StockRow key={index} index={index} name={stock.name} isDown={stock.isDown} price={stock.price} percentChange={stock.percentChange} />
+      ))}
 
       <p className=' p-4'>Demo price used for showcase purposes only. Prices are fictional and do not reflect real-time market data</p>
     </div>
