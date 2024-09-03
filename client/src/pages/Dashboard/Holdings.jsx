@@ -9,10 +9,10 @@ const Holdings = () => {
   const { allHoldings, isLoading } = useHoldings();
 
   return (
-    <div className=' pt-24 px-8'>
+    <div className=' pt-24 px-8 '>
       <h1 className=' text-xl font-medium mb-6'>Holdings</h1>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto ">
         {isLoading
           ? <div className=' loading loading-spinner'></div>
           : <table className="table w-[60vw] max-md:w-screen max-md:table-xs table-zebra">
@@ -28,7 +28,7 @@ const Holdings = () => {
             </thead>
             <tbody>
               {allHoldings?.map((stock, index) => (
-                <HoldingRow key={index} index={index } name={stock.name} qty={stock.quantity} cost={stock.cost} />
+                <HoldingRow key={index} name={stock.name} qty={stock.quantity} cost={stock.cost} />
               ))}
             </tbody>
           </table>}

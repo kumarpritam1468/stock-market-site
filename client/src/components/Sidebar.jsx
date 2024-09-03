@@ -8,7 +8,7 @@ const Sidebar = () => {
   const { allStocks, isLoading } = useAllStocks();
 
   return (
-    <div className='fixed w-[30vw] max-md:w-screen max-md:pt-24 h-screen overflow-y-auto border-r border-r-slate-500'>
+    <div className='fixed max-md:relative w-[30vw] max-md:w-screen max-md:pt-24 h-screen overflow-y-auto border-r border-r-slate-500'>
       <div className=' w-full flex justify-evenly items-center py-[22px] border-b-2 border-b-slate-200'>
         <div className=' flex gap-2'>
           <h4 className=' font-medium '>NIFTY 50</h4>
@@ -35,7 +35,7 @@ const Sidebar = () => {
       {isLoading && <div className=' loading loading-spinner'></div>}
 
       {allStocks?.map((stock, index) => (
-        <StockRow key={index} index={index} name={stock.name} isDown={stock.isDown} price={stock.price} percentChange={stock.percentChange} />
+        <StockRow key={index} name={stock.name} isDown={stock.isDown} price={stock.price} percentChange={stock.percentChange} />
       ))}
 
       <p className=' p-4'>Demo price used for showcase purposes only. Prices are fictional and do not reflect real-time market data</p>

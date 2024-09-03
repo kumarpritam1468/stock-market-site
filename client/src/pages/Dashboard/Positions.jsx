@@ -39,7 +39,9 @@ const Positions = () => {
                     </tbody>
                 </table>
             </div>
-            
+
+            <p className=' mt-6'>This page is static as live data is required for intraday</p>
+
         </div>
     )
 }

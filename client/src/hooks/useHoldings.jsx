@@ -26,7 +26,6 @@ export const useHoldings = () => {
         mutationFn: async (stockData) => {
             try {
                 const { name, quantity, cost } = stockData;
-                console.log(JSON.stringify({ name, quantity, cost }));
 
                 const response = await fetch('/api/holding/buy', {
                     method: 'POST',
@@ -55,6 +54,7 @@ export const useHoldings = () => {
         mutationFn: async (stockData) => {
             try {
                 const { name, quantity, price } = stockData;
+                console.log(JSON.stringify({ name, quantity, price }));
 
                 const response = await fetch('/api/holding/sell', {
                     method: 'POST',
