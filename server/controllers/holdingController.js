@@ -5,7 +5,7 @@ const getAll = async (req, res) => {
     try {
         const userId = req.user._id.toString();
 
-        const holdings = await Holding.findOne({ user: userId });
+        const holdings = await Holding.find({ user: userId });
 
         res.status(200).json(holdings);
     } catch (error) {
@@ -65,7 +65,7 @@ const sellStock = async (req, res) => {
         if (holding) {
             if (quantity > holding.quantity) {
                 return res.status(400).json({ error: "Sell quantity is more than you have" });
-            } else if (quantity === holding.quantity) {
+            } else if (Number(quantity) === holding.quantity) {
                 await Holding.deleteOne({ name });
                 await user.updateOne({ $pull: { holdings: holding._id } });
                 await user.updateOne({ $inc: { accountBalance: price } });
