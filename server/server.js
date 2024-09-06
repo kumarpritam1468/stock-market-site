@@ -27,3 +27,7 @@ app.listen(PORT, () => {
     connectToDB();
     console.log(`Server running at port ${PORT}`);
 })
+
+app.get('/', () => {
+    console.log("Welcome");
+})
